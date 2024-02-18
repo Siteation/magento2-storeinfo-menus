@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd"
+>
+    <default>
+        <siteation_storeinfo_menus>
+            <about>
+                <menu>
+                    <about_item_1>
+                        <url>about-us</url>
+                        <text>About us</text>
+                    </about_item_1>
+                    <about_item_2>
+                        <url>customer-service</url>
+                        <text>Customer Service</text>
+                    </about_item_2>
+                    <about_item_3>
+                        <url>contact</url>
+                        <text>Contact</text>
+                    </about_item_3>
+                    <about_item_4>
+                        <url>https://siteation.dev/</url>
+                        <text>Powered by Siteation</text>
+                    </about_item_4>
+                </menu>
+            </about>
+            <legal>
+                <menu>
+                    <legal_item_1>
+                        <url>privacy-policy-cookie-restriction-mode</url>
+                        <text>Privacy Policy</text>
+                    </legal_item_1>
+                    <legal_item_2>
+                        <url>enable-cookies</url>
+                        <text>Cookies</text>
+                    </legal_item_2>
+                </menu>
+            </legal>
+        </siteation_storeinfo_menus>
+    </default>
+</config>

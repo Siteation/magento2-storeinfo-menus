@@ -1,0 +1,34 @@
+{
+  "name": "siteation/magento2-storeinfo-menus",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "magento2-module",
+  "description": "Get your store menus with ease",
+  "readme": "README.md",
+  "keywords": [
+    "magento2",
+    "magento2-module",
+    "magento2-hyva",
+    "menus"
+  ],
+  "authors": [
+    {
+      "name": "Siteation",
+      "email": "info@siteation.dev",
+      "homepage": "https://siteation.dev/"
+    }
+  ],
+  "require": {
+    "magento/module-backend": "^102.0",
+    "magento/framework": "^102.0|^103.0",
+    "magento/module-store": "^101.0|^101.1"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Siteation\\StoreInfoMenus\\": ""
+    }
+  }
+}
