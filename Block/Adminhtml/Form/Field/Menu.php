@@ -2,7 +2,7 @@
 
 /**
  * @author Siteation (https://siteation.dev/)
- * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @copyright Copyright 2023 Siteation (https://siteation.dev/)
  * @license MIT
  */
 
