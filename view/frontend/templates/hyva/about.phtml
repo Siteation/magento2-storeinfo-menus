@@ -30,14 +30,16 @@ if (count($menu) === 0) {
     <h2 class="text-md leading-5 font-semibold tracking-wider uppercase">
         <?= $escaper->escapeHtml(__('About')) ?>
     </h2>
-    <ul class="mt-4 space-y-4">
-        <?php foreach ($menu as $item): ?>
-            <li>
-                <a
-                    href="<?= $escaper->escapeUrl($block->getUrl($item['url'])); ?>"
-                    class="hover:underline"
-                ><?= $escaper->escapeHtml($item['text']); ?></a>
-            </li>
-        <?php endforeach ?>
-    </ul>
+    <nav aria-label="<?= $escaper->escapeHtmlAttr(__('About')) ?>">
+        <ul class="mt-4 space-y-4">
+            <?php foreach ($menu as $item): ?>
+                <li>
+                    <a
+                        href="<?= $escaper->escapeUrl($block->getUrl($item['url'])); ?>"
+                        class="hover:underline"
+                    ><?= $escaper->escapeHtml($item['text']); ?></a>
+                </li>
+            <?php endforeach ?>
+        </ul>
+    </nav>
 </div>
