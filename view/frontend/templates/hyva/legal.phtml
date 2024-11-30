@@ -20,26 +20,30 @@ $storeMenus = $viewModels->require(StoreInfoMenus::class);
 
 $menu = $storeMenus->getLegalMenu();
 
+$classList = $block->getClassList() ?: 'pr-4 lg:w-1/4 md:w-1/2';
+$classListTitle = $block->getClassListTitle() ?: 'text-md leading-5 font-semibold tracking-wider uppercase';
+$classListMenu = $block->getClassListMenu() ?: 'mt-4 space-y-4 hover:[&_a]:underline';
+
 if (count($menu) === 0) {
     return '';
 }
 
 ?>
 
-<div class="pr-4 lg:w-1/4 md:w-1/2">
-    <h2 class="text-md leading-5 font-semibold tracking-wider uppercase">
+<nav
+    class="<?= $escaper->escapeHtmlAttr($classList) ?>"
+    aria-label="<?= $escaper->escapeHtml(__('Legal Menu')) ?>"
+>
+    <h2 class="<?= $escaper->escapeHtmlAttr($classListTitle) ?>">
         <?= $escaper->escapeHtml(__('Legal')) ?>
     </h2>
-    <nav aria-label="<?= $escaper->escapeHtmlAttr(__('Legal')) ?>">
-        <ul class="mt-4 space-y-4">
-            <?php foreach ($menu as $item): ?>
-                <li>
-                    <a
-                        href="<?= $escaper->escapeUrl($block->getUrl($item['url'])); ?>"
-                        class="hover:underline"
-                    ><?= $escaper->escapeHtml($item['text']); ?></a>
-                </li>
-            <?php endforeach ?>
-        </ul>
-    </nav>
-</div>
+    <ul class="<?= $escaper->escapeHtmlAttr($classListMenu) ?>">
+        <?php foreach ($menu as $item): ?>
+            <li>
+                <a href="<?= $escaper->escapeUrl($block->getUrl($item['url'])); ?>">
+                    <?= $escaper->escapeHtml($item['text']); ?>
+                </a>
+            </li>
+        <?php endforeach ?>
+    </ul>
+</nav>

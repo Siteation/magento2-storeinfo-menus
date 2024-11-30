@@ -25,8 +25,11 @@ if (count($menu) === 0) {
 
 ?>
 
-<nav aria-label="<?= $escaper->escapeHtmlAttr(__('About')) ?>">
-    <ul class="footer links">
+<nav
+    class="footer links"
+    aria-label="<?= $escaper->escapeHtmlAttr(__('About Menu')) ?>"
+>
+    <ul>
         <?php foreach ($menu as $item): ?>
             <li class="nav item">
                 <a href="<?= $escaper->escapeUrl($block->getUrl($item['url'])); ?>">
