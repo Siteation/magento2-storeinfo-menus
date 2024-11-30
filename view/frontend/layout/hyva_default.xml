@@ -4,6 +4,7 @@
     xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
 >
     <body>
+        <referenceBlock name="footer-static-links" remove="true"/>
         <referenceContainer name="footer-content">
             <block
                 name="storeinfo.footer.menu.about"
@@ -15,6 +16,5 @@
                 after="storeinfo.footer.menu.about"
             />
         </referenceContainer>
-        <referenceBlock name="footer-static-links" remove="true"/>
     </body>
 </page>
