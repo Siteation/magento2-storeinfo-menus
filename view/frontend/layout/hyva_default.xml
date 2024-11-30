@@ -11,9 +11,12 @@
                 template="Siteation_StoreInfoMenus::hyva/about.phtml"
             />
             <block
+                name="storeinfo.footer.menu.services"
+                template="Siteation_StoreInfoMenus::hyva/services.phtml"
+            />
+            <block
                 name="storeinfo.footer.menu.legal"
                 template="Siteation_StoreInfoMenus::hyva/legal.phtml"
-                after="storeinfo.footer.menu.about"
             />
         </referenceContainer>
     </body>

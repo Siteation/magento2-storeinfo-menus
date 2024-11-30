@@ -17,9 +17,19 @@
                 </arguments>
             </block>
             <block
+                name="storeinfo.footer.menu.services"
+                template="Siteation_StoreInfoMenus::luma/services.phtml"
+                after="storeinfo.footer.menu.services"
+            >
+                <arguments>
+                    <argument name="viewModelStoreInfo"
+                        xsi:type="object">Siteation\StoreInfoMenus\ViewModel\StoreInfoMenus</argument>
+                </arguments>
+            </block>
+            <block
                 name="storeinfo.footer.menu.legal"
                 template="Siteation_StoreInfoMenus::luma/legal.phtml"
-                after="storeinfo.footer.menu.about"
+                after="storeinfo.footer.menu.legal"
             >
                 <arguments>
                     <argument name="viewModelStoreInfo"
