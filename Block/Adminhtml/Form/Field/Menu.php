@@ -13,7 +13,7 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
 
 class Menu extends AbstractFieldArray
 {
-    protected function _prepareToRender()
+    protected function _prepareToRender(): void
     {
         $this->addColumn('url', [
             'label' => __('Link'),
@@ -29,7 +29,7 @@ class Menu extends AbstractFieldArray
         $this->_addButtonLabel = __('Add');
     }
 
-    protected function _getElementHtml(AbstractElement $element)
+    protected function _getElementHtml(AbstractElement $element): string
     {
         $id = $element['html_id'];
         $html = parent::_getElementHtml($element);

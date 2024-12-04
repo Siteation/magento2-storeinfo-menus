@@ -14,12 +14,9 @@ use Magento\Store\Model\ScopeInterface;
 
 class StoreInfoMenus implements ArgumentInterface
 {
-    protected $scopeConfig;
-
-    public function __construct(ScopeConfigInterface $scopeConfig)
-    {
-        $this->scopeConfig = $scopeConfig;
-    }
+    public function __construct(
+        private ScopeConfigInterface $scopeConfig
+    ) {}
 
     public function getStoreMenu(string $attribute): array
     {
