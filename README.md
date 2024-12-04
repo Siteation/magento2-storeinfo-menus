@@ -29,3 +29,7 @@ Go to `Stores > Configration > Siteation > Store Menus` and add you menu items
 
 [preview-1]: ./assets/preview-admin.webp "Preview of the Magento2 admin Siteation StoreInfo Menus"
 [preview-2]: ./assets/preview.webp "Preview of the Siteation StoreInfo Menus"
+
+since version 1.1 its now posiable to drag the fields to 
+
+![screen2](./assets/siteation-siteinfo-memu-dragable.gif)
