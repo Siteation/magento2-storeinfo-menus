@@ -1,6 +1,6 @@
 {
   "name": "siteation/magento2-storeinfo-menus",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "type": "magento2-module",
   "description": "Get your store menus with ease",
