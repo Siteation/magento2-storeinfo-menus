@@ -20,7 +20,9 @@ $storeMenus = $viewModels->require(StoreInfoMenus::class);
 
 $menu = $storeMenus->getAboutMenu();
 
-$title = $block->getTitle() !== null ? $block->getTitle() : "About";
+$title = $block->getTitle() ?: "About";
+$showTitle = $block->getShowTitle() !== null ? $block->getShowTitle() : true;
+
 $classList = $block->getClassList() !== null ? $block->getClassList() : 'pr-4 lg:w-1/4 md:w-1/2';
 $classListTitle = $block->getClassListTitle() !== null ? $block->getClassListTitle() : 'text-md leading-5 font-semibold tracking-wider uppercase';
 $classListMenu = $block->getClassListMenu() !== null ? $block->getClassListMenu() : 'mt-4 space-y-4';
@@ -36,9 +38,11 @@ if (count($menu) === 0) {
     class="<?= $escaper->escapeHtmlAttr($classList) ?>"
     aria-label="<?= $escaper->escapeHtml(__('%1 Menu', $title)) ?>"
 >
-    <h2 class="<?= $escaper->escapeHtmlAttr($classListTitle) ?>">
-        <?= $escaper->escapeHtml($title) ?>
-    </h2>
+    <?php if ($showTitle): ?>
+        <h2 class="<?= $escaper->escapeHtmlAttr($classListTitle) ?>">
+            <?= $escaper->escapeHtml($title) ?>
+        </h2>
+    <?php endif; ?>
     <ul class="<?= $escaper->escapeHtmlAttr($classListMenu) ?>">
         <?php foreach ($menu as $item): ?>
             <li>
