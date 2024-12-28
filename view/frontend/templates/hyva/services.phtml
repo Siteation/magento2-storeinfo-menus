@@ -26,7 +26,7 @@ $showTitle = $block->getShowTitle() !== null ? $block->getShowTitle() : true;
 $classList = $block->getClassList() !== null ? $block->getClassList() : 'pr-4 lg:w-1/4 md:w-1/2';
 $classListTitle = $block->getClassListTitle() !== null ? $block->getClassListTitle() : 'text-md leading-5 font-semibold tracking-wider uppercase';
 $classListMenu = $block->getClassListMenu() !== null ? $block->getClassListMenu() : 'mt-4 space-y-4';
-$classListMenuItem = $block->getClassListMenuItem() !== null ? $block->getClassListMenuItem() : 'underline';
+$classListMenuItem = $block->getClassListMenuItem() !== null ? $block->getClassListMenuItem() : 'font-medium hover:underline';
 
 if (count($menu) === 0) {
     return '';
