@@ -43,10 +43,7 @@ class Menu extends AbstractFieldArray
                         tolerance: 'pointer'
                     });
 
-                    $('#" . $id . " thead tr').prepend('<th></th>');
-                    $('#" . $id . " tfoot tr').prepend('<th></th>');
-
-                    $('#" . $id . " tbody tr').prepend('<td><span class=\"draggable-handle\" style=\"display: flex; justify-content: center; align-items: center; margin-top: 0.5rem\"></span></td>');
+                    $('#" . $id . " tbody tr td:last-child').prepend('<span class=\"draggable-handle\" style=\"display: inline-flex; justify-content: center; align-items: center; margin-block: 0.5rem; margin-inline-end: 2rem; vertical-align: baseline;\"></span>');
                 });
             });
         </script>";
