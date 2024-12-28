@@ -23,6 +23,7 @@ $menu = $storeMenus->getAboutMenu();
 $classList = $block->getClassList() ?: 'pr-4 lg:w-1/4 md:w-1/2';
 $classListTitle = $block->getClassListTitle() ?: 'text-md leading-5 font-semibold tracking-wider uppercase';
 $classListMenu = $block->getClassListMenu() ?: 'mt-4 space-y-4 hover:[&_a]:underline';
+$title = $block->getTitle() !== null ? $block->getTitle() : "About";
 
 if (count($menu) === 0) {
     return '';
@@ -32,10 +33,10 @@ if (count($menu) === 0) {
 
 <nav
     class="<?= $escaper->escapeHtmlAttr($classList) ?>"
-    aria-label="<?= $escaper->escapeHtml(__('About Menu')) ?>"
+    aria-label="<?= $escaper->escapeHtml(__('%1 Menu', $title)) ?>"
 >
     <h2 class="<?= $escaper->escapeHtmlAttr($classListTitle) ?>">
-        <?= $escaper->escapeHtml(__('About')) ?>
+        <?= $escaper->escapeHtml($title) ?>
     </h2>
     <ul class="<?= $escaper->escapeHtmlAttr($classListMenu) ?>">
         <?php foreach ($menu as $item): ?>
