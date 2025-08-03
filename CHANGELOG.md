@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/Siteation/magento2-storeinfo-menus/compare/1.2.1...main
 
+## [1.3.0] - 2025-08-03
+
+### Changed
+- Backend sorter code with CSP support
+
+### Fixed
+- Sorter handle position in Mage-OS theme
+
 ## [1.2.1] - 2024-12-28
 
 [1.2.1]: https://github.com/Siteation/magento2-storeinfo-menus/compare/1.2.0...1.2.1
