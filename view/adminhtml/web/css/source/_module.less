@@ -1,0 +1,38 @@
+.abs-siteation-sortable-gripper {
+    --gripper-size: 1.8rem;
+    --gripper-space: 2rem;
+
+    tbody tr {
+        cursor: grab;
+
+        &:hover {
+            --gripper-color: @color-gray52;
+        }
+
+        &.ui-sortable-helper {
+            cursor: grabbing;
+        }
+
+        td:first-child {
+            position: relative;
+            padding-left: ~'calc((var(--gripper-space) * 2) + var(--gripper-size))';
+
+            &::before {
+                content: @icon-gripper__content;
+                position: absolute;
+                top: ~'calc(50% - (var(--gripper-size) / 2))';
+                left: var(--gripper-space);
+                font-family: @icons-admin__font-name;
+                font-size: var(--gripper-size);
+                line-height: 1;
+                color: var(--gripper-color, @color-gray62);
+            }
+        }
+    }
+}
+
+table[id^="siteation_storeinfo_menus_"] {
+    &.admin__control-table.ui-sortable {
+        &:extend(.abs-siteation-sortable-gripper all);
+    }
+}
