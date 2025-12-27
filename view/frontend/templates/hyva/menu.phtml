@@ -18,7 +18,7 @@ use Siteation\StoreInfoMenus\ViewModel\StoreInfoMenus;
 /** @var StoreInfoMenus $storeMenu */
 $storeMenus = $viewModels->require(StoreInfoMenus::class);
 
-$classes = $block->getCssClasses() ?? 'footer links';
+$classes = $block->getCssClasses() ?? 'pe-4 lg:w-1/4 md:w-1/2';
 
 $headingTag = $block->getHeadingTag() ?? 'h2';
 $headingText = $block->getTitle() ?: "About";
