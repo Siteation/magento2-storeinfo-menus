@@ -1,0 +1,54 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2023 Siteation (https://siteation.dev/)
+ * @license MIT
+ */
+
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Escaper;
+use Siteation\StoreInfoMenus\ViewModel\StoreInfoMenus;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+
+/** @var StoreInfoMenus $storeMenu */
+$storeMenus = $block->getStoreInfoMenus();
+
+$classes = $block->getCssClasses() ?? 'footer links';
+
+$headingTag = $block->getHeadingTag() ?? 'h2';
+$headingText = $block->getTitle() ?: "About";
+$showHeading = $block->getShowHeading() !== null ? $block->getShowHeading() : true;
+$headingClasses = $block->getHeadingCssClasses() ?? 'title mb-4 text-md leading-5 font-semibold tracking-wider uppercase';
+
+$menuId = $block->getData('menu_id') ?: 'about';
+$menuItems = $storeMenus->getMenu($menuId);
+$menuClasses = $block->getMenuClasses() !== null ? $block->getMenuClasses() : 'mt-4 space-y-4 [&_a]:font-medium [&_a]:hover:underline';
+
+if (count($menuItems) === 0) {
+    return '';
+}
+
+?>
+
+<nav
+    class="<?= $escaper->escapeHtmlAttr($classes) ?>"
+    aria-label="<?= $escaper->escapeHtml(__('%1 Menu', $headingText)) ?>"
+>
+    <?php if ($showHeading): ?>
+        <h2 class="<?= $escaper->escapeHtmlAttr($headingClasses) ?>">
+            <?= $escaper->escapeHtml($headingText) ?>
+        </h2>
+    <?php endif; ?>
+    <ul class="<?= $escaper->escapeHtmlAttr($menuClasses) ?>">
+        <?php foreach ($menuItems as $item): ?>
+            <li class="nav item">
+                <a href="<?= $escaper->escapeUrl($storeMenus->getUrl($item['url'])); ?>">
+                    <?= $escaper->escapeHtml($item['text']); ?>
+                </a>
+            </li>
+        <?php endforeach ?>
+    </ul>
+</nav>

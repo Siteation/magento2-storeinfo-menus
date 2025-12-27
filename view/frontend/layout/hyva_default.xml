@@ -5,19 +5,27 @@
 >
     <body>
         <referenceBlock name="footer-static-links" remove="true"/>
-        <referenceContainer name="footer-content">
-            <block
-                name="storeinfo.footer.menu.about"
-                template="Siteation_StoreInfoMenus::hyva/about.phtml"
-            />
-            <block
-                name="storeinfo.footer.menu.services"
-                template="Siteation_StoreInfoMenus::hyva/services.phtml"
-            />
-            <block
-                name="storeinfo.footer.menu.legal"
-                template="Siteation_StoreInfoMenus::hyva/legal.phtml"
-            />
-        </referenceContainer>
+
+        <move element="storeinfo.footer.menu.about" destination="footer-content"/>
+        <move element="storeinfo.footer.menu.services" destination="footer-content"/>
+        <move element="storeinfo.footer.menu.legal" destination="footer-content"/>
+
+        <referenceBlock name="storeinfo.footer.menu.about">
+            <arguments>
+                <argument name="css_classes" xsi:type="string">pe-4 lg:w-1/4 md:w-1/2</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="storeinfo.footer.menu.services">
+            <arguments>
+                <argument name="css_classes" xsi:type="string">pe-4 lg:w-1/4 md:w-1/2</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="storeinfo.footer.menu.legal">
+            <arguments>
+                <argument name="css_classes" xsi:type="string">pe-4 lg:w-1/4 md:w-1/2</argument>
+            </arguments>
+        </referenceBlock>
     </body>
 </page>

@@ -33,34 +33,35 @@ class StoreInfoMenus implements ArgumentInterface
         return is_string($value) ? json_decode($value, true) : (array) $value;
     }
 
+    public function getMenu($id): array
+    {
+        $menu = $this->getStoreMenu($id);
+        return !empty($menu) ? $menu : [];
+    }
+
     public function getAboutMenu(): array
     {
-        $menu = $this->getStoreMenu('about');
-        return !empty($menu) ? $menu : [];
+        return $this->getMenu('about');
     }
 
     public function getServicesMenu(): array
     {
-        $menu = $this->getStoreMenu('services');
-        return !empty($menu) ? $menu : [];
+        return $this->getMenu('services');
     }
 
     public function getLegalMenu(): array
     {
-        $menu = $this->getStoreMenu('legal');
-        return !empty($menu) ? $menu : [];
+        return $this->getMenu('legal');
     }
 
     public function getCustom1Menu(): array
     {
-        $menu = $this->getStoreMenu('custom_1');
-        return !empty($menu) ? $menu : [];
+        return $this->getMenu('custom_1');
     }
 
     public function getCustom2Menu(): array
     {
-        $menu = $this->getStoreMenu('custom_2');
-        return !empty($menu) ? $menu : [];
+        return $this->getMenu('custom_2');
     }
 
     public function getUrl($route = '', $params = []) {
