@@ -8,15 +8,23 @@
 
 namespace Siteation\StoreInfoMenus\ViewModel;
 
+use Magento\Framework\UrlInterface;
+use Magento\Framework\View\Element\Context;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Store\Model\ScopeInterface;
 
 class StoreInfoMenus implements ArgumentInterface
 {
+    /** @var UrlInterface */
+    protected $urlBuilder;
+
     public function __construct(
-        private ScopeConfigInterface $scopeConfig
-    ) {}
+        private ScopeConfigInterface $scopeConfig,
+        private Context $context
+    ) {
+        $this->urlBuilder = $context->getUrlBuilder();
+    }
 
     public function getStoreMenu(string $attribute): array
     {
@@ -53,5 +61,13 @@ class StoreInfoMenus implements ArgumentInterface
     {
         $menu = $this->getStoreMenu('custom_2');
         return !empty($menu) ? $menu : [];
+    }
+
+    public function getUrl($route = '', $params = []) {
+        // Fixes case when using `tel:` as the url
+        if (str_starts_with($route, 'tel:')) {
+            return $route;
+        }
+        return $this->urlBuilder->getUrl($route, $params);
     }
 }

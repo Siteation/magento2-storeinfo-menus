@@ -47,7 +47,7 @@ if (count($menu) === 0) {
         <?php foreach ($menu as $item): ?>
             <li>
                 <a
-                    href="<?= $escaper->escapeUrl($block->getUrl($item['url'])); ?>"
+                    href="<?= $escaper->escapeUrl($storeMenus->getUrl($item['url'])); ?>"
                     class="<?= $escaper->escapeHtmlAttr($classListMenuItem) ?>"
                 ><?= $escaper->escapeHtml($item['text']); ?></a>
             </li>
