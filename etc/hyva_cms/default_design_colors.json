@@ -1,0 +1,18 @@
+{
+  "background_color": {
+    "type": "color",
+    "label": "Background Color",
+    "attributes": {
+      "data-pattern": "^#?[a-zA-Z0-9,().\\-\\s%]+$",
+      "data-pattern-msg": "Value must be a valid CSS background color (e.g. hex, rgb[a], hsl[a], color name, or CSS variable)"
+    }
+  },
+  "text_color": {
+    "type": "color",
+    "label": "Text Color",
+    "attributes": {
+      "data-pattern": "^#?[a-zA-Z0-9,().\\-\\s%]+$",
+      "data-pattern-msg": "Value must be a valid CSS text color (e.g. hex, rgb[a], hsl[a], color name, or CSS variable)"
+    }
+  }
+}

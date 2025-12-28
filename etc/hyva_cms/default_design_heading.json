@@ -1,0 +1,21 @@
+{
+  "heading_classes": {
+    "label": "Heading Style",
+    "type": "select",
+    "default_value": "default",
+    "options": [
+      {
+        "label": "Default",
+        "value": "default"
+      },
+      {
+        "label": "Large",
+        "value": "large"
+      },
+      {
+        "label": "Empty",
+        "value": "empty"
+      }
+    ]
+  }
+}

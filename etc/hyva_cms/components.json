@@ -1,0 +1,112 @@
+{
+  "storeinfo_menu": {
+    "label": "Menu List",
+    "category": "StoreInfo",
+    "icon": "Siteation_StoreInfoMenus::images/components/list.svg",
+    "children": {
+      "config": {
+        "accepts": ["storeinfo_menu_item"]
+      }
+    },
+    "template": "Siteation_StoreInfoMenus::elements/menu/default.phtml",
+    "content": {
+      "variants": {
+        "type": "variant",
+        "label": "Variant",
+        "options": [
+          {
+            "value": "Siteation_StoreInfoMenus::elements/menu/default.phtml",
+            "label": "Default"
+          },
+          {
+            "value": "Siteation_StoreInfoMenus::elements/menu/collapse.phtml",
+            "label": "Collapse"
+          },
+          {
+            "value": "Siteation_StoreInfoMenus::elements/menu/card.phtml",
+            "label": "Card"
+          }
+        ]
+      },
+      "menu_id": {
+        "label": "Menu Id",
+        "type": "text",
+        "attributes": {
+          "comment": "Options are: about, services, legal, custom_1, custom_2 or any custom menus you added to the StoreInfo"
+        }
+      },
+      "open": {
+        "label": "Open",
+        "type": "boolean",
+        "default_value": false,
+        "show_if": {
+          "variants": ["Siteation_StoreInfoMenus::elements/menu/collapse.phtml"]
+        }
+      },
+      "heading": {
+        "label": "Heading",
+        "type": "text",
+        "default_value": "Menu Title",
+        "attributes": {
+          "required": true
+        }
+      },
+      "heading_tag": {
+        "type": "select",
+        "label": "Heading Tag",
+        "default_value": "h2",
+        "hide_if": {
+          "variants": ["Siteation_StoreInfoMenus::elements/menu/collapse.phtml"]
+        },
+        "options": [
+          {
+            "label": "H1",
+            "value": "h1"
+          },
+          {
+            "label": "H2",
+            "value": "h2"
+          },
+          {
+            "label": "H3",
+            "value": "h3"
+          },
+          {
+            "label": "H4",
+            "value": "h4"
+          },
+          {
+            "label": "H5",
+            "value": "h5"
+          },
+          {
+            "label": "H6",
+            "value": "h6"
+          }
+        ]
+      }
+    },
+    "design": {
+      "includes": [
+        "Siteation_StoreInfoMenus::etc/hyva_cms/default_design_colors.json",
+        "Siteation_StoreInfoMenus::etc/hyva_cms/default_design_heading.json"
+      ]
+    },
+    "advanced": {
+      "includes": "Hyva_CmsBase::etc/hyva_cms/default_advanced.json"
+    }
+  },
+  "storeinfo_menu_item": {
+    "label": "Menu Item",
+    "category": "StoreInfo",
+    "icon": "Siteation_StoreInfoMenus::images/components/list.svg",
+    "template": "Siteation_StoreInfoMenus::elements/menu-item.phtml",
+    "require_parent": true,
+    "content": {
+      "link": {
+        "type": "link",
+        "label": "Link"
+      }
+    }
+  }
+}

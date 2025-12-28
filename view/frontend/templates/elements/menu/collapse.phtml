@@ -1,0 +1,78 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @license MIT
+ */
+
+use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\CmsLiveviewEditor\Block\Element;
+use Magento\Framework\Escaper;
+use Siteation\StoreInfoMenus\ViewModel\StoreInfoMenus;
+
+/** @var ViewModelRegistry $viewModels */
+/** @var Element $block */
+/** @var Escaper $escaper */
+
+/** @var StoreInfoMenus $menus */
+$storeMenus = $viewModels->require(StoreInfoMenus::class);
+
+$open = $block->getData('open');
+
+$bgColor = $block->getData('background_color');
+$fgColor = $block->getData('text_color');
+$styles = array_filter([
+    $bgColor ? "background-color: {$escaper->escapeHtml($bgColor)}" : '',
+    $fgColor ? "color: {$escaper->escapeHtml($fgColor)}" : ''
+]);
+$styleAttr = !empty($styles) ? ' style="' . implode('; ', $styles) . ';"' : '';
+
+$classes = implode(' ', array_filter([
+    $block->getClasses() ?: 'storeinfo',
+]));
+
+$headingTag = $block->getHeadingTag() ?? 'h2';
+$headingText = $block->getHeading();
+$headingClasses = implode(' ', array_filter([
+    'mb-4',
+    $block->getHeadingClasses() === "default" ? '!text-base !leading-5 !font-semibold tracking-wider uppercase' : '',
+    $block->getHeadingClasses() === "large" ? '!text-2xl !lg:text-4xl' : ''
+]));
+
+$menuId = $block->getData('menu_id') ?: '';
+$menuItems = $storeMenus->getMenu($menuId);
+$menuClasses = $block->getMenuClasses() !== null ? $block->getMenuClasses() : 'space-y-4 !list-none !pl-0 [&_a]:font-medium [&_a]:hover:underline';
+$menuChildren = $block->getData('children') ?: [];
+?>
+
+<?php if (count($menuItems) || count($menuChildren)): ?>
+    <details
+        <?= $escaper->escapeHtmlAttr($block->renderBlockId()) ?>
+        class="<?= $escaper->escapeHtmlAttr($classes) ?>"
+        data-liveview-element="storeinfo-menus"
+        <?= /** @noEscape */ $styleAttr ?>
+        <?= /** @noEscape */ $block->getEditorAttrs() ?>
+        <?php if ($open): ?>open<?php endif; ?>
+    >
+        <summary class="<?= $escaper->escapeHtmlAttr($headingClasses) ?>">
+            <?= $escaper->escapeHtml($headingText) ?>
+        </summary>
+        <nav aria-label="<?= $escaper->escapeHtml(__('%1 Menu', $headingText)) ?>">
+            <ul class="<?= $escaper->escapeHtmlAttr($menuClasses) ?>">
+                <?php foreach ($menuItems as $item): ?>
+                    <li class="nav item">
+                        <a href="<?= $escaper->escapeUrl($storeMenus->getUrl($item['url'])); ?>">
+                            <?= $escaper->escapeHtml($item['text']); ?>
+                        </a>
+                    </li>
+                <?php endforeach ?>
+                <?php foreach ($menuChildren as $elementData): ?>
+                    <?= $block->createChildHtml($elementData) ?>
+                <?php endforeach; ?>
+            </ul>
+        </nav>
+    </details>
+<?php else: ?>
+    <?= /** @noEscape */ $block->renderEditorMessage(['preview_message' => __('No Store Menu Configured')]) ?>
+<?php endif; ?>

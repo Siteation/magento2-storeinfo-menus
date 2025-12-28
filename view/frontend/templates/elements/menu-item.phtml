@@ -1,0 +1,41 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2021 Siteation (https://siteation.dev/)
+ * @license MIT
+ */
+
+use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\CmsLiveviewEditor\Block\Element;
+use Magento\Framework\Escaper;
+
+/** @var ViewModelRegistry $viewModels */
+/** @var Element $block */
+/** @var Escaper $escaper */
+
+$link = $block->getLinkData($block->getData('link') ?? []);
+$classes = implode(' ', array_filter([
+    $block->getClasses() ?: 'nav item',
+]));
+?>
+
+<li
+    <?= $escaper->escapeHtmlAttr($block->renderBlockId()) ?>
+    <?php if ($classes): ?>
+    class="<?= $escaper->escapeHtmlAttr($classes) ?>"
+    <?php endif; ?>
+    data-liveview-element="storeinfo-menu-item"
+    <?= $link['open_in_new'] ? 'target="_blank" rel="noopener"' : '' ?>
+    <?= /** @noEscape */ $block->getEditorAttrs() ?>
+>
+    <a href="<?= $escaper->escapeUrl($link['url']); ?>">
+        <?php if ($link['label']): ?>
+            <?= $escaper->escapeHtml($link['label']) ?>
+        <?php else: ?>
+            <?= /** @noEscape */ $block->renderEditorMessage([
+                'preview_message' => __('No Item Label Set')
+            ], 'simple') ?>
+        <?php endif; ?>
+    </a>
+</li>
