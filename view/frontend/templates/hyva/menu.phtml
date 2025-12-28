@@ -27,7 +27,7 @@ $headingClasses = $block->getHeadingCssClasses() ?? 'title mb-4 text-md leading-
 
 $menuId = $block->getData('menu_id') ?: 'about';
 $menuItems = $storeMenus->getMenu($menuId);
-$menuClasses = $block->getMenuClasses() !== null ? $block->getMenuClasses() : 'mt-4 space-y-4 [&_a]:font-medium [&_a]:hover:underline';
+$menuClasses = $block->getMenuClasses() !== null ? $block->getMenuClasses() : 'space-y-4 [&_a]:font-medium [&_a]:hover:underline';
 
 if (count($menuItems) === 0) {
     return '';
