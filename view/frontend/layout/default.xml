@@ -9,7 +9,7 @@
         <referenceContainer name="footer">
             <block
                 name="storeinfo.footer.menu.about"
-                template="Siteation_StoreInfoMenus::menu.phtml"
+                template="Siteation_StoreInfoMenus::html/menu.phtml"
             >
                 <arguments>
                     <argument name="menu_id" xsi:type="string">about</argument>
@@ -17,9 +17,10 @@
                     <argument name="store_info_menus" xsi:type="object">Siteation\StoreInfoMenus\ViewModel\StoreInfoMenus</argument>
                 </arguments>
             </block>
+
             <block
                 name="storeinfo.footer.menu.services"
-                template="Siteation_StoreInfoMenus::menu.phtml"
+                template="Siteation_StoreInfoMenus::html/menu.phtml"
             >
                 <arguments>
                     <argument name="menu_id" xsi:type="string">services</argument>
@@ -27,13 +28,44 @@
                     <argument name="store_info_menus" xsi:type="object">Siteation\StoreInfoMenus\ViewModel\StoreInfoMenus</argument>
                 </arguments>
             </block>
+
             <block
                 name="storeinfo.footer.menu.legal"
-                template="Siteation_StoreInfoMenus::menu.phtml"
+                template="Siteation_StoreInfoMenus::html/menu.phtml"
             >
                 <arguments>
                     <argument name="menu_id" xsi:type="string">legal</argument>
                     <argument name="title" xsi:type="string" translate="true">Legal</argument>
+                    <argument name="store_info_menus" xsi:type="object">Siteation\StoreInfoMenus\ViewModel\StoreInfoMenus</argument>
+                </arguments>
+            </block>
+
+            <block
+                name="storeinfo.footer.menu.custom_1"
+                template="Siteation_StoreInfoMenus::html/menu.phtml"
+            >
+                <arguments>
+                    <argument name="menu_id" xsi:type="string">custom_1</argument>
+                    <argument name="store_info_menus" xsi:type="object">Siteation\StoreInfoMenus\ViewModel\StoreInfoMenus</argument>
+                </arguments>
+            </block>
+
+            <block
+                name="storeinfo.footer.menu.custom_2"
+                template="Siteation_StoreInfoMenus::html/menu.phtml"
+            >
+                <arguments>
+                    <argument name="menu_id" xsi:type="string">custom_2</argument>
+                    <argument name="store_info_menus" xsi:type="object">Siteation\StoreInfoMenus\ViewModel\StoreInfoMenus</argument>
+                </arguments>
+            </block>
+
+            <block
+                name="storeinfo.footer.menu.custom_3"
+                template="Siteation_StoreInfoMenus::html/menu.phtml"
+            >
+                <arguments>
+                    <argument name="menu_id" xsi:type="string">custom_3</argument>
                     <argument name="store_info_menus" xsi:type="object">Siteation\StoreInfoMenus\ViewModel\StoreInfoMenus</argument>
                 </arguments>
             </block>

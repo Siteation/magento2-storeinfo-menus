@@ -9,6 +9,9 @@
         <move element="storeinfo.footer.menu.about" destination="footer-content"/>
         <move element="storeinfo.footer.menu.services" destination="footer-content"/>
         <move element="storeinfo.footer.menu.legal" destination="footer-content"/>
+        <move element="storeinfo.footer.menu.custom_1" destination="footer-content"/>
+        <move element="storeinfo.footer.menu.custom_2" destination="footer-content"/>
+        <move element="storeinfo.footer.menu.custom_3" destination="footer-content"/>
 
         <referenceBlock name="storeinfo.footer.menu.about">
             <arguments>
@@ -23,6 +26,26 @@
         </referenceBlock>
 
         <referenceBlock name="storeinfo.footer.menu.legal">
+            <arguments>
+                <argument name="show_heading" xsi:type="boolean">false</argument>
+                <argument name="css_classes" xsi:type="string">inline-block</argument>
+                <argument name="menu_css_classes" xsi:type="string">inline-flex items-center gap-4</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="storeinfo.footer.menu.custom_1">
+            <arguments>
+                <argument name="css_classes" xsi:type="string">pe-4 lg:w-1/4 md:w-1/2</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="storeinfo.footer.menu.custom_2">
+            <arguments>
+                <argument name="css_classes" xsi:type="string">pe-4 lg:w-1/4 md:w-1/2</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="storeinfo.footer.menu.custom_3">
             <arguments>
                 <argument name="css_classes" xsi:type="string">pe-4 lg:w-1/4 md:w-1/2</argument>
             </arguments>

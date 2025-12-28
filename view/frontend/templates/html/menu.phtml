@@ -6,28 +6,27 @@
  * @license MIT
  */
 
-use Hyva\Theme\Model\ViewModelRegistry;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Escaper;
 use Siteation\StoreInfoMenus\ViewModel\StoreInfoMenus;
 
-/** @var ViewModelRegistry $viewModels */
 /** @var Template $block */
 /** @var Escaper $escaper */
 
 /** @var StoreInfoMenus $storeMenu */
-$storeMenus = $viewModels->require(StoreInfoMenus::class);
+$storeMenus = $block->getStoreInfoMenus();
 
-$classes = $block->getCssClasses() ?? 'pe-4 lg:w-1/4 md:w-1/2';
+$classes = $block->getCssClasses() ?? 'footer links';
 
 $headingTag = $block->getHeadingTag() ?? 'h2';
-$headingText = $block->getTitle() ?: "About";
+$headingText = $block->getTitle() ?: "";
 $showHeading = $block->getShowHeading() !== null ? $block->getShowHeading() : true;
 $headingClasses = $block->getHeadingCssClasses() ?? 'title mb-4 text-md leading-5 font-semibold tracking-wider uppercase';
 
-$menuId = $block->getData('menu_id') ?: 'about';
+$menuId = $block->getData('menu_id') ?: '';
+$menuHeading = $storeMenus->getMenuHeading($menuId) ?: $headingText;
 $menuItems = $storeMenus->getMenu($menuId);
-$menuClasses = $block->getMenuClasses() !== null ? $block->getMenuClasses() : 'space-y-4 [&_a]:font-medium [&_a]:hover:underline';
+$menuClasses = $block->getMenuCssClasses() !== null ? $block->getMenuCssClasses() : 'space-y-4 font-medium';
 
 if (count($menuItems) === 0) {
     return '';
@@ -37,17 +36,19 @@ if (count($menuItems) === 0) {
 
 <nav
     class="<?= $escaper->escapeHtmlAttr($classes) ?>"
-    aria-label="<?= $escaper->escapeHtml(__('%1 Menu', $headingText)) ?>"
+    aria-label="<?= $escaper->escapeHtml(__('%1 Menu', $menuHeading)) ?>"
 >
-    <?php if ($showHeading): ?>
-        <h2 class="<?= $escaper->escapeHtmlAttr($headingClasses) ?>">
-            <?= $escaper->escapeHtml($headingText) ?>
-        </h2>
+    <?php if ($showHeading && $menuHeading): ?>
+        <<?= $escaper->escapeHtmlAttr($headingTag) ?>
+            class="<?= $escaper->escapeHtmlAttr($headingClasses) ?>"
+        >
+            <?= $escaper->escapeHtml($menuHeading) ?>
+        </<?= $escaper->escapeHtmlAttr($headingTag) ?>>
     <?php endif; ?>
     <ul class="<?= $escaper->escapeHtmlAttr($menuClasses) ?>">
         <?php foreach ($menuItems as $item): ?>
             <li class="nav item">
-                <a href="<?= $escaper->escapeUrl($storeMenus->getUrl($item['url'])); ?>">
+                <a href="<?= $escaper->escapeUrl($storeMenus->getUrl($item['url'])); ?>" class="hover:underline">
                     <?= $escaper->escapeHtml($item['text']); ?>
                 </a>
             </li>
