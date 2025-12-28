@@ -17,9 +17,6 @@ composer require siteation/magento2-storeinfo-menus
 bin/magento setup:upgrade
 ```
 
-> This Module require Magento 2.4 or higher!
-> For more requirements see the `composer.json`.
-
 ## How to use
 
 Go to `Stores > Configration > Siteation > Store Menus` and add you menu items
