@@ -1,6 +1,6 @@
 {
   "name": "siteation/magento2-storeinfo-menus",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "license": "MIT",
   "type": "magento2-module",
   "description": "Get your store menus with ease",
@@ -9,6 +9,7 @@
     "magento2",
     "magento2-module",
     "magento2-hyva",
+    "hyva-cms",
     "menus"
   ],
   "authors": [
