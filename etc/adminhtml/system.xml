@@ -14,10 +14,15 @@
             <tab>siteation</tab>
             <resource>Magento_Backend::store</resource>
 
-            <group id="about" translate="label" sortOrder="41" showInDefault="1" showInWebsite="1"
+            <group id="about" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1"
                 showInStore="1">
-                <label>About</label>
-                <field id="menu" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1"
+                <label>About Us</label>
+                <field id="menu_heading" translate="label,comment" type="text" sortOrder="10" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Heading</label>
+                    <comment>Leave empty for the default value</comment>
+                </field>
+                <field id="menu" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1"
                     showInStore="1" canRestore="1">
                     <label>Menu</label>
                     <frontend_model>Siteation\StoreInfoMenus\Block\Adminhtml\Form\Field\Menu</frontend_model>
@@ -25,10 +30,15 @@
                 </field>
             </group>
 
-            <group id="services" translate="label" sortOrder="41" showInDefault="1" showInWebsite="1"
+            <group id="services" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1"
                 showInStore="1">
                 <label>Services</label>
-                <field id="menu" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1"
+                <field id="menu_heading" translate="label,comment" type="text" sortOrder="10" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Heading</label>
+                    <comment>Leave empty for the default value</comment>
+                </field>
+                <field id="menu" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1"
                     showInStore="1" canRestore="1">
                     <label>Menu</label>
                     <frontend_model>Siteation\StoreInfoMenus\Block\Adminhtml\Form\Field\Menu</frontend_model>
@@ -36,9 +46,14 @@
                 </field>
             </group>
 
-            <group id="legal" translate="label" sortOrder="41" showInDefault="1" showInWebsite="1"
+            <group id="legal" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1"
                 showInStore="1">
                 <label>Legal</label>
+                <field id="menu_heading" translate="label,comment" type="text" sortOrder="10" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Heading</label>
+                    <comment>Leave empty for the default value</comment>
+                </field>
                 <field id="menu" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1"
                     showInStore="1" canRestore="1">
                     <label>Menu</label>
@@ -47,10 +62,14 @@
                 </field>
             </group>
 
-            <group id="custom_1" translate="label" sortOrder="41" showInDefault="1" showInWebsite="1"
+            <group id="custom_1" translate="label" sortOrder="40" showInDefault="1" showInWebsite="1"
                 showInStore="1">
                 <label>Custom 1</label>
-                <field id="menu" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1"
+                <field id="menu_heading" translate="label" type="text" sortOrder="10" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Heading</label>
+                </field>
+                <field id="menu" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1"
                     showInStore="1" canRestore="1">
                     <label>Menu</label>
                     <frontend_model>Siteation\StoreInfoMenus\Block\Adminhtml\Form\Field\Menu</frontend_model>
@@ -61,7 +80,26 @@
             <group id="custom_2" translate="label" sortOrder="41" showInDefault="1" showInWebsite="1"
                 showInStore="1">
                 <label>Custom 2</label>
-                <field id="menu" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1"
+                <field id="menu_heading" translate="label" type="text" sortOrder="10" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Heading</label>
+                </field>
+                <field id="menu" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1"
+                    showInStore="1" canRestore="1">
+                    <label>Menu</label>
+                    <frontend_model>Siteation\StoreInfoMenus\Block\Adminhtml\Form\Field\Menu</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                </field>
+            </group>
+
+            <group id="custom_3" translate="label" sortOrder="42" showInDefault="1" showInWebsite="1"
+                showInStore="1">
+                <label>Custom 3</label>
+                <field id="menu_heading" translate="label" type="text" sortOrder="10" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Heading</label>
+                </field>
+                <field id="menu" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1"
                     showInStore="1" canRestore="1">
                     <label>Menu</label>
                     <frontend_model>Siteation\StoreInfoMenus\Block\Adminhtml\Form\Field\Menu</frontend_model>

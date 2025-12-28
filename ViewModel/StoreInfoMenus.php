@@ -26,11 +26,22 @@ class StoreInfoMenus implements ArgumentInterface
         $this->urlBuilder = $context->getUrlBuilder();
     }
 
+    public function getStoreMenuHeading(string $attribute): string
+    {
+        $path = sprintf('siteation_storeinfo_menus/%s/menu_heading', $attribute);
+        return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE) ?: '';
+    }
+
     public function getStoreMenu(string $attribute): array
     {
         $path = sprintf('siteation_storeinfo_menus/%s/menu', $attribute);
         $value = $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE);
         return is_string($value) ? json_decode($value, true) : (array) $value;
+    }
+
+    public function getMenuHeading($id): string
+    {
+        return $this->getStoreMenuHeading($id);
     }
 
     public function getMenu($id): array
