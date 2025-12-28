@@ -32,7 +32,7 @@
         "label": "Menu Id",
         "type": "text",
         "attributes": {
-          "comment": "Options are: about, services, legal, custom_1, custom_2 or any custom menus you added to the StoreInfo"
+          "comment": "Options are: about, services, legal, custom_1, custom_2, custom_3 or any custom menus you added to the StoreInfo"
         }
       },
       "open": {
