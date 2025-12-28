@@ -55,21 +55,41 @@ class StoreInfoMenus implements ArgumentInterface
         return $this->getMenu('about');
     }
 
+    /**
+     * @deprecated
+     *
+     * use the getMenu() instead
+     */
     public function getServicesMenu(): array
     {
         return $this->getMenu('services');
     }
 
+    /**
+     * @deprecated
+     *
+     * use the getMenu() instead
+     */
     public function getLegalMenu(): array
     {
         return $this->getMenu('legal');
     }
 
+    /**
+     * @deprecated
+     *
+     * use the getMenu() instead
+     */
     public function getCustom1Menu(): array
     {
         return $this->getMenu('custom_1');
     }
 
+    /**
+     * @deprecated
+     *
+     * use the getMenu() instead
+     */
     public function getCustom2Menu(): array
     {
         return $this->getMenu('custom_2');
