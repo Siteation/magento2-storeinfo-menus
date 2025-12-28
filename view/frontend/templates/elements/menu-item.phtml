@@ -26,10 +26,16 @@ $classes = implode(' ', array_filter([
     class="<?= $escaper->escapeHtmlAttr($classes) ?>"
     <?php endif; ?>
     data-liveview-element="storeinfo-menu-item"
-    <?= $link['open_in_new'] ? 'target="_blank" rel="noopener"' : '' ?>
     <?= /** @noEscape */ $block->getEditorAttrs() ?>
 >
-    <a href="<?= $escaper->escapeUrl($link['url']); ?>">
+    <a
+        href="<?= $escaper->escapeUrl($link['url']); ?>"
+        class="hover:underline"
+        <?php if ($link['open_in_new']): ?>
+            target="_blank"
+            rel="noopener"
+        <?php endif ?>
+    >
         <?php if ($link['label']): ?>
             <?= $escaper->escapeHtml($link['label']) ?>
         <?php else: ?>

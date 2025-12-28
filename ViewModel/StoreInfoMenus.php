@@ -50,6 +50,25 @@ class StoreInfoMenus implements ArgumentInterface
         return !empty($menu) ? $menu : [];
     }
 
+    public function getUrl($route = '', $params = []) {
+        // Fixes case when using `tel:` as the url
+        if (str_starts_with($route, 'tel:') || str_starts_with($route, '#')) {
+            return $route;
+        }
+        return $this->urlBuilder->getUrl($route, $params);
+    }
+
+    public function isExternal($url, $baseUrl): bool
+    {
+        $isExternalUrl = str_starts_with($url, 'https') && !str_starts_with($url, $baseUrl);
+        return $isExternalUrl;
+    }
+
+    /**
+     * @deprecated
+     *
+     * use the getMenu() instead
+     */
     public function getAboutMenu(): array
     {
         return $this->getMenu('about');
@@ -93,13 +112,5 @@ class StoreInfoMenus implements ArgumentInterface
     public function getCustom2Menu(): array
     {
         return $this->getMenu('custom_2');
-    }
-
-    public function getUrl($route = '', $params = []) {
-        // Fixes case when using `tel:` as the url
-        if (str_starts_with($route, 'tel:')) {
-            return $route;
-        }
-        return $this->urlBuilder->getUrl($route, $params);
     }
 }

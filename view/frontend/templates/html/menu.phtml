@@ -47,8 +47,16 @@ if (count($menuItems) === 0) {
     <?php endif; ?>
     <ul class="<?= $escaper->escapeHtmlAttr($menuClasses) ?>">
         <?php foreach ($menuItems as $item): ?>
+            <?php $url = $item['url']; ?>
             <li class="nav item">
-                <a href="<?= $escaper->escapeUrl($storeMenus->getUrl($item['url'])); ?>" class="hover:underline">
+                <a
+                    href="<?= $escaper->escapeUrl($storeMenus->getUrl($url)); ?>"
+                    class="hover:underline"
+                    <?php if ($storeMenus->isExternal($url, $block->getBaseUrl())): ?>
+                        target="_blank"
+                        rel="noopener"
+                    <?php endif ?>
+                >
                     <?= $escaper->escapeHtml($item['text']); ?>
                 </a>
             </li>

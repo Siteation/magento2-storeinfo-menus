@@ -42,7 +42,7 @@ $headingClasses = implode(' ', array_filter([
 
 $menuId = $block->getData('menu_id') ?: '';
 $menuItems = $storeMenus->getMenu($menuId);
-$menuClasses = $block->getMenuClasses() !== null ? $block->getMenuClasses() : 'space-y-4 !list-none !pl-0 [&_a]:font-medium [&_a]:hover:underline';
+$menuClasses = $block->getMenuClasses() !== null ? $block->getMenuClasses() : 'space-y-4 !list-none !pl-0 font-medium';
 $menuChildren = $block->getData('children') ?: [];
 ?>
 
@@ -61,8 +61,16 @@ $menuChildren = $block->getData('children') ?: [];
         <nav aria-label="<?= $escaper->escapeHtml(__('%1 Menu', $headingText)) ?>">
             <ul class="<?= $escaper->escapeHtmlAttr($menuClasses) ?>">
                 <?php foreach ($menuItems as $item): ?>
+                    <?php $url = $item['url']; ?>
                     <li class="nav item">
-                        <a href="<?= $escaper->escapeUrl($storeMenus->getUrl($item['url'])); ?>">
+                        <a
+                            href="<?= $escaper->escapeUrl($storeMenus->getUrl($item['url'])); ?>"
+                            class="hover:underline"
+                            <?php if ($storeMenus->isExternal($url, $block->getBaseUrl())): ?>
+                                target="_blank"
+                                rel="noopener"
+                            <?php endif ?>
+                        >
                             <?= $escaper->escapeHtml($item['text']); ?>
                         </a>
                     </li>
