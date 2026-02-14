@@ -7,7 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/Siteation/magento2-storeinfo-menus/compare/2.0.0...main
+[Unreleased]: https://github.com/Siteation/magento2-storeinfo-menus/compare/2.0.1...main
+
+## [2.0.1] - 2026-02-14
+
+[2.0.1]: https://github.com/Siteation/magento2-storeinfo-menus/compare/2.0.0...2.0.1
+
+### Added
+
+- Tailwind 4 support for Hyvä.
 
 ## [2.0.0] - 2025-08-03
 
