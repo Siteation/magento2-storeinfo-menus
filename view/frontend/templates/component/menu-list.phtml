@@ -1,0 +1,73 @@
+<?php declare(strict_types=1);
+
+/**
+ * @author Siteation (https://siteation.dev/)
+ * @copyright Copyright 2023 Siteation (https://siteation.dev/)
+ * @license MIT
+ *
+ * Nebula Content "menu-list" component. Renders a configured Store Info menu in one of
+ * three layouts (default / collapse / card). Collapse uses a native <details> element
+ * (no JS), keeping it CSP-safe on the NFT storefront.
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Qoliber\NebulaComponent\Model\ViewModelRegistry $viewModels
+ */
+
+use Siteation\StoreInfoMenus\ViewModel\StoreInfoMenus;
+
+$data  = ($block->getData('node') ?? [])['data'] ?? [];
+$menus = $viewModels->require(StoreInfoMenus::class);
+
+$menuId  = (string) ($data['menu_id'] ?? 'about');
+$items   = $menus->getMenu($menuId);
+$heading = (string) ($data['heading'] ?? '') ?: $menus->getMenuHeading($menuId);
+$tag     = in_array($data['heading_tag'] ?? 'h2', ['h2', 'h3', 'h4'], true) ? $data['heading_tag'] : 'h2';
+$layout  = in_array($data['layout'] ?? 'default', ['default', 'collapse', 'card'], true) ? $data['layout'] : 'default';
+
+$baseUrl = $block->getBaseUrl();
+
+$rootClasses = array_filter([
+    'nebula-menu-list',
+    'nebula-menu-list--' . $layout,
+    $layout === 'card' ? 'rounded-lg border border-gray-200 p-5' : '',
+    $data['css_classes'] ?? '',
+]);
+$headingClasses = 'nebula-menu-list-heading mb-3 text-sm font-semibold uppercase tracking-wide text-gray-700';
+
+if (!$items) {
+    return;
+}
+
+/** Renders the <ul> of menu links (shared by all layouts). */
+$renderItems = static function (array $items, $menus, string $baseUrl, $escaper): string {
+    $html = '<ul class="nebula-menu-list-items space-y-2 font-medium">';
+    foreach ($items as $item) {
+        $url      = (string) ($item['url'] ?? '');
+        $text     = (string) ($item['text'] ?? '');
+        $external = $menus->isExternal($url, $baseUrl);
+        $html .= '<li class="nebula-menu-list-item">'
+            . '<a class="hover:underline" href="' . $escaper->escapeUrl($menus->getUrl($url)) . '"'
+            . ($external ? ' target="_blank" rel="noopener"' : '') . '>'
+            . $escaper->escapeHtml($text)
+            . '</a></li>';
+    }
+    return $html . '</ul>';
+};
+?>
+<nav class="<?= $escaper->escapeHtmlAttr(implode(' ', $rootClasses)) ?>" aria-label="<?= $escaper->escapeHtmlAttr($heading) ?>">
+    <?php if ($layout === 'collapse') : ?>
+        <details class="nebula-menu-list-collapse group">
+            <summary class="<?= $escaper->escapeHtmlAttr($headingClasses) ?> flex cursor-pointer list-none items-center justify-between">
+                <?= $escaper->escapeHtml($heading) ?>
+                <span class="ml-2 transition-transform group-open:rotate-180" aria-hidden="true">&#9662;</span>
+            </summary>
+            <?= /** @noEscape */ $renderItems($items, $menus, $baseUrl, $escaper) ?>
+        </details>
+    <?php else : ?>
+        <?php if ($heading !== '') : ?>
+            <<?= $escaper->escapeHtmlAttr($tag) ?> class="<?= $escaper->escapeHtmlAttr($headingClasses) ?>"><?= $escaper->escapeHtml($heading) ?></<?= $escaper->escapeHtmlAttr($tag) ?>>
+        <?php endif; ?>
+        <?= /** @noEscape */ $renderItems($items, $menus, $baseUrl, $escaper) ?>
+    <?php endif; ?>
+</nav>

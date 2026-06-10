@@ -1,0 +1,73 @@
+{
+  "name": "menu-list",
+  "label": "Menu List",
+  "icon": "fa-solid fa-list-ul",
+  "category": "storeinfo",
+  "sortOrder": 40,
+  "isContainer": false,
+  "parents": {"defaultPolicy": "allow"},
+  "children": {"defaultPolicy": "deny"},
+  "template": "Siteation_StoreInfoMenus::component/menu-list.phtml",
+  "fields": {
+    "content": {
+      "menu_id": {
+        "label": "Menu",
+        "type": "select",
+        "position": 10,
+        "default": "about",
+        "note": "Configured under Stores > Configuration > Siteation > Store Info Menus.",
+        "options": [
+          {"value": "about", "label": "About"},
+          {"value": "services", "label": "Services"},
+          {"value": "legal", "label": "Legal"},
+          {"value": "custom_1", "label": "Custom 1"},
+          {"value": "custom_2", "label": "Custom 2"},
+          {"value": "custom_3", "label": "Custom 3"}
+        ]
+      },
+      "heading": {
+        "label": "Heading",
+        "type": "text",
+        "translate": true,
+        "position": 20,
+        "note": "Leave empty to use the configured menu heading."
+      },
+      "heading_tag": {
+        "label": "Heading tag",
+        "type": "select",
+        "position": 30,
+        "default": "h2",
+        "options": [
+          {"value": "h2", "label": "H2"},
+          {"value": "h3", "label": "H3"},
+          {"value": "h4", "label": "H4"}
+        ]
+      }
+    },
+    "design": {
+      "layout": {
+        "label": "Layout",
+        "type": "select",
+        "position": 10,
+        "default": "default",
+        "options": [
+          {"value": "default", "label": "Default"},
+          {"value": "collapse", "label": "Collapse"},
+          {"value": "card", "label": "Card"}
+        ]
+      }
+    },
+    "advanced": {
+      "css_classes": {
+        "label": "CSS classes",
+        "type": "text",
+        "position": 10
+      }
+    }
+  },
+  "defaults": {
+    "menu_id": "about",
+    "heading_tag": "h2",
+    "layout": "default"
+  }
+}
